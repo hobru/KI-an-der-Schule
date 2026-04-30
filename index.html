@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KI an der Schule – Werkzeuge, Tipps &amp; Ressourcen</title>
+    <style>
+        :root {
+            --color-primary: #2872fa;
+            --color-primary-dark: #1559ed;
+            --color-heading: #192a3d;
+            --color-text: #3A4F66;
+            --color-bg-light: #f2f5f7;
+            --color-bg-card: #ffffff;
+            --color-border: #e1e8ed;
+            --color-accent-green: #00d084;
+            --color-accent-amber: #fcb900;
+            --color-accent-purple: #9b51e0;
+            --color-accent-red: #cf2e2e;
+            --max-width: 1200px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            color: var(--color-text);
+            background: var(--color-bg-light);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        /* ── Header ── */
+        .site-header {
+            background: var(--color-bg-card);
+            border-bottom: 1px solid var(--color-border);
+            padding: 0.8rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .site-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--color-heading);
+            text-decoration: none;
+        }
+        .site-title:hover { color: var(--color-primary); }
+        .header-nav a {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-text);
+            text-decoration: none;
+            margin-left: 1.5rem;
+        }
+        .header-nav a:hover { color: var(--color-primary); }
+
+        /* ── Hero ── */
+        .hero {
+            background: linear-gradient(135deg, var(--color-heading) 0%, var(--color-primary-dark) 100%);
+            color: #fff;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        .hero p {
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* ── Main Content ── */
+        .content-wrap {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 4rem;
+        }
+
+        /* ── Intro ── */
+        .intro-box {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: 10px;
+            padding: 2rem 2.5rem;
+            margin-bottom: 3rem;
+            font-size: 1.05rem;
+        }
+        .intro-box strong { color: var(--color-heading); }
+
+        /* ── Section headings ── */
+        .section-heading {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            margin-top: 1rem;
+        }
+        .section-heading .icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+        .section-heading h2 {
+            font-size: 1.4rem;
+            color: var(--color-heading);
+            font-weight: 700;
+        }
+
+        /* ── Cards grid ── */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: 10px;
+            padding: 1.8rem 2rem;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .card:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+        .card h3 {
+            font-size: 1.1rem;
+            color: var(--color-heading);
+            margin-bottom: 0.6rem;
+            font-weight: 700;
+        }
+        .card p {
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+        .card .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .card .links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            text-decoration: none;
+            background: rgba(40, 114, 250, 0.07);
+            padding: 0.3rem 0.7rem;
+            border-radius: 6px;
+            transition: background 0.15s;
+        }
+        .card .links a:hover {
+            background: rgba(40, 114, 250, 0.15);
+        }
+        .card .links a .arrow { font-size: 0.7rem; }
+
+        /* ── Prompt-Tipps Box ── */
+        .prompt-examples {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: 10px;
+            padding: 2rem 2.5rem;
+            margin-bottom: 3rem;
+        }
+        .prompt-examples h3 {
+            font-size: 1.15rem;
+            color: var(--color-heading);
+            margin-bottom: 1rem;
+        }
+        .prompt-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        .prompt-item {
+            background: var(--color-bg-light);
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+        }
+        .prompt-item .label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--color-primary);
+            margin-bottom: 0.4rem;
+        }
+        .prompt-item .bad {
+            color: var(--color-accent-red);
+            text-decoration: line-through;
+            font-size: 0.92rem;
+            margin-bottom: 0.25rem;
+        }
+        .prompt-item .good {
+            color: var(--color-accent-green);
+            font-size: 0.92rem;
+            font-weight: 600;
+        }
+
+        /* ── Wichtig-Banner ── */
+        .warning-banner {
+            background: linear-gradient(135deg, #fff8e1 0%, #fff3cd 100%);
+            border: 1px solid #ffe082;
+            border-radius: 10px;
+            padding: 1.8rem 2.5rem;
+            margin-bottom: 3rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+        .warning-banner .emoji { font-size: 1.6rem; flex-shrink: 0; margin-top: 0.15rem; }
+        .warning-banner h3 {
+            font-size: 1.05rem;
+            color: var(--color-heading);
+            margin-bottom: 0.4rem;
+        }
+        .warning-banner ul {
+            margin-left: 1.2rem;
+            font-size: 0.95rem;
+        }
+        .warning-banner li { margin-bottom: 0.3rem; }
+
+        /* ── Weiterführende Links ── */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        .resource-link {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: 10px;
+            padding: 1.2rem 1.5rem;
+            text-decoration: none;
+            color: var(--color-text);
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .resource-link:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+            transform: translateY(-1px);
+        }
+        .resource-link .r-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        .resource-link .r-text strong {
+            display: block;
+            font-size: 0.95rem;
+            color: var(--color-heading);
+        }
+        .resource-link .r-text span {
+            font-size: 0.82rem;
+            color: var(--color-text);
+        }
+
+        /* ── Footer ── */
+        .site-footer {
+            background: var(--color-heading);
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.85rem;
+        }
+        .site-footer a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+        }
+        .site-footer a:hover { text-decoration: underline; }
+
+        /* ── Responsive ── */
+        @media (max-width: 600px) {
+            .cards { grid-template-columns: 1fr; }
+            .prompt-grid { grid-template-columns: 1fr; }
+            .resources-grid { grid-template-columns: 1fr; }
+            .hero { padding: 3rem 1.2rem; }
+            .intro-box, .prompt-examples, .warning-banner { padding: 1.5rem; }
+            .warning-banner { flex-direction: column; }
+            .header-nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ════ HEADER ════ -->
+<header class="site-header">
+    <div class="header-inner">
+        <a href="#" class="site-title">KI an der Schule</a>
+        <nav class="header-nav">
+            <a href="#">Startseite</a>
+            <a href="#tools">KI-Tools</a>
+            <a href="#prompting">Richtig Prompten</a>
+            <a href="#datenschutz">Datenschutz</a>
+            <a href="#ressourcen">Ressourcen</a>
+        </nav>
+    </div>
+</header>
+
+<!-- ════ HERO ════ -->
+<section class="hero">
+    <h1>🤖 KI an der Schule – Werkzeuge &amp; Tipps</h1>
+    <p>Künstliche Intelligenz kann beim Lernen und Unterrichten helfen – wenn man weiß, wie. Hier finden Schüler, Lehrkräfte und Eltern Tools, Tipps und Anleitungen für den sinnvollen Einsatz von KI.</p>
+</section>
+
+<!-- ════ MAIN CONTENT ════ -->
+<main class="content-wrap">
+
+    <!-- Intro -->
+    <div class="intro-box">
+        <strong>Wichtig:</strong> KI-Tools sind <strong>Werkzeuge</strong>, keine Ersatz-Lehrer. Sie können dir helfen, Inhalte besser zu verstehen, Lernzettel zu erstellen oder dich auf Klausuren vorzubereiten. Aber: <strong>Immer kritisch prüfen</strong>, was die KI dir liefert – sie kann sich auch irren!
+    </div>
+
+    <!-- ─── SECTION: NotebookLM ─── -->
+    <div id="tools" class="section-heading">
+        <div class="icon" style="background: rgba(0,208,132,0.12); color: #00a86b;">📓</div>
+        <h2>Google NotebookLM – Dein KI-Lernassistent</h2>
+    </div>
+    <div class="cards">
+        <div class="card">
+            <h3>Lernzettel erstellen</h3>
+            <p>Lade deine Mitschriften, Arbeitsblätter oder Buchseiten als PDF hoch. NotebookLM fasst die Inhalte zusammen und erstellt dir strukturierte Lernzettel mit den wichtigsten Punkten.</p>
+            <div class="links">
+                <a href="https://notebooklm.google/" target="_blank">NotebookLM öffnen <span class="arrow">↗</span></a>
+                <a href="https://www.youtube.com/watch?v=Qd0hrH99khU" target="_blank">🎬 Tutorial (Deutsch) <span class="arrow">↗</span></a>
+            </div>
+        </div>
+        <div class="card">
+            <h3>Audio-Podcasts zum Lernen</h3>
+            <p>NotebookLM kann aus deinen Dokumenten automatisch Audio-Zusammenfassungen im Podcast-Stil erstellen. Perfekt zum Lernen unterwegs – im Bus, beim Spazieren oder vor dem Einschlafen.</p>
+            <div class="links">
+                <a href="https://www.youtube.com/watch?v=F5T78ghLI9Q" target="_blank">🎬 Podcasts erstellen <span class="arrow">↗</span></a>
+                <a href="https://www.youtube.com/watch?v=BSIxZyT9TQ0" target="_blank">🎬 Neue Audio-Features <span class="arrow">↗</span></a>
+            </div>
+        </div>
+        <div class="card">
+            <h3>Test-Klausur generieren</h3>
+            <p>Lass dir von NotebookLM Quizfragen und Probeklausuren zu deinen Unterrichtsmaterialien erstellen. So kannst du dich selbst testen und Wissenslücken entdecken.</p>
+            <div class="links">
+                <a href="https://www.youtube.com/watch?v=A8cHSTrM6Ps" target="_blank">🎬 Feedback & Quiz <span class="arrow">↗</span></a>
+                <a href="https://blog.google/technology/ai/notebooklm-google-ai/" target="_blank">📖 Google Blog <span class="arrow">↗</span></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── SECTION: ChatGPT ─── -->
+    <div class="section-heading">
+        <div class="icon" style="background: rgba(155,81,224,0.12); color: #7c3aed;">💬</div>
+        <h2>ChatGPT – Mehr als nur Antworten kopieren</h2>
+    </div>
+    <div class="cards">
+        <div class="card">
+            <h3>Herleitungen verstehen statt Lösungen abschreiben</h3>
+            <p>Bitte ChatGPT nicht einfach um die Lösung, sondern um eine <strong>Schritt-für-Schritt-Erklärung</strong>. So lernst du den Lösungsweg und nicht nur das Ergebnis.</p>
+            <div class="links">
+                <a href="https://chatgpt.com/" target="_blank">ChatGPT öffnen <span class="arrow">↗</span></a>
+                <a href="https://www.youtube.com/watch?v=oc6RV5c1yd0" target="_blank">🎬 ChatGPT für die Schule <span class="arrow">↗</span></a>
+            </div>
+        </div>
+        <div class="card">
+            <h3>Texte zusammenfassen &amp; Fragen stellen</h3>
+            <p>Kopiere einen Text aus einem Buch oder Arbeitsblatt in ChatGPT und sage: <em>„Fasse mir den Text zusammen"</em> oder <em>„Stell mir 5 Fragen zu diesem Text"</em>. Ideal für die Klausurvorbereitung.</p>
+            <div class="links">
+                <a href="https://ki-campus.org/" target="_blank">📖 KI-Campus Kurse <span class="arrow">↗</span></a>
+            </div>
+        </div>
+        <div class="card">
+            <h3>Texte übersetzen &amp; Sprachen üben</h3>
+            <p>ChatGPT kann Texte übersetzen und dir erklären, <strong>warum</strong> eine Übersetzung so lautet. Du kannst auch Dialoge in einer Fremdsprache üben oder deine Grammatik prüfen lassen.</p>
+            <div class="links">
+                <a href="https://www.youtube.com/watch?v=jBFFIaGjVHo" target="_blank">🎬 Sprachen mit KI lernen <span class="arrow">↗</span></a>
+            </div>
+        </div>
+        <div class="card">
+            <h3>Diktat-Bewertung verstehen</h3>
+            <p>Du kannst ChatGPT bitten, dir die typischen Bewertungskriterien für ein Diktat zu erklären: Wie werden Fehler gezählt? Was zählt als halber, was als ganzer Fehler? Lass dir Beispiele geben.</p>
+            <div class="links">
+                <a href="https://chatgpt.com/" target="_blank">Jetzt ausprobieren <span class="arrow">↗</span></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── SECTION: Richtig Prompten ─── -->
+    <div id="prompting" class="section-heading">
+        <div class="icon" style="background: rgba(252,185,0,0.15); color: #d4a000;">✏️</div>
+        <h2>Richtig Prompten – So bekommst du bessere Antworten</h2>
+    </div>
+    <div class="prompt-examples">
+        <h3>Gute Prompts vs. schlechte Prompts</h3>
+        <p style="margin-bottom: 1.2rem;">Ein „Prompt" ist deine Eingabe an die KI. Je genauer du fragst, desto besser die Antwort:</p>
+        <div class="prompt-grid">
+            <div class="prompt-item">
+                <div class="label">Zusammenfassung</div>
+                <div class="bad">❌ „Erkläre Photosynthese"</div>
+                <div class="good">✅ „Erkläre die Photosynthese für die 7. Klasse in einfachen Worten mit einem Beispiel."</div>
+            </div>
+            <div class="prompt-item">
+                <div class="label">Mathe verstehen</div>
+                <div class="bad">❌ „Löse diese Gleichung: 2x+5=15"</div>
+                <div class="good">✅ „Erkläre mir Schritt für Schritt, wie ich 2x+5=15 löse. Erkläre jeden Schritt so, dass ich es beim nächsten Mal selbst kann."</div>
+            </div>
+            <div class="prompt-item">
+                <div class="label">Referat vorbereiten</div>
+                <div class="bad">❌ „Schreib mir ein Referat über den Klimawandel"</div>
+                <div class="good">✅ „Erstelle mir eine Gliederung für ein 5-Minuten-Referat über den Klimawandel mit den 3 wichtigsten Punkten."</div>
+            </div>
+            <div class="prompt-item">
+                <div class="label">Klausur-Vorbereitung</div>
+                <div class="bad">❌ „Frag mich was zu Geschichte"</div>
+                <div class="good">✅ „Stelle mir 5 Prüfungsfragen zur Französischen Revolution, Niveau 10. Klasse. Gib die Antwort erst, wenn ich es versucht habe."</div>
+            </div>
+            <div class="prompt-item">
+                <div class="label">Rollen-Prompt</div>
+                <div class="bad">❌ „Erkläre mir Bruchrechnung"</div>
+                <div class="good">✅ „Du bist mein Mathe-Nachhilfelehrer. Erkläre mir Bruchrechnung geduldig und mit einfachen Beispielen. Frage nach jedem Schritt, ob ich es verstanden habe."</div>
+            </div>
+            <div class="prompt-item">
+                <div class="label">Fehler finden</div>
+                <div class="bad">❌ „Korrigier meinen Text"</div>
+                <div class="good">✅ „Überprüfe meinen deutschen Aufsatz auf Rechtschreibung, Grammatik und Stil. Erkläre jeden gefundenen Fehler, damit ich daraus lerne."</div>
+            </div>
+        </div>
+        <p style="margin-top: 1.2rem; font-size: 0.92rem;">
+            <strong>Tipp:</strong> Denke an die 3 Ks – <strong>Kontext</strong> (Wer bist du? Welche Klasse?), <strong>Klarheit</strong> (Was genau willst du?), <strong>Kriterien</strong> (Wie soll die Antwort aussehen?).
+        </p>
+        <div class="links" style="margin-top: 1rem;">
+            <a href="https://www.youtube.com/watch?v=oc6RV5c1yd0" target="_blank" style="display:inline-flex;align-items:center;gap:0.3rem;font-size:0.82rem;font-weight:600;color:var(--color-primary);text-decoration:none;background:rgba(40,114,250,0.07);padding:0.3rem 0.7rem;border-radius:6px;">🎬 Prompting-Tipps für Schüler <span class="arrow">↗</span></a>
+            <a href="https://www.fobizz.com/de/fortbildungen/prompt-engineering-in-der-schule/" target="_blank" style="display:inline-flex;align-items:center;gap:0.3rem;font-size:0.82rem;font-weight:600;color:var(--color-primary);text-decoration:none;background:rgba(40,114,250,0.07);padding:0.3rem 0.7rem;border-radius:6px;">📖 Fobizz: Prompt-Engineering <span class="arrow">↗</span></a>
+        </div>
+    </div>
+
+    <!-- ─── SECTION: Wie funktioniert KI? ─── -->
+    <div class="section-heading">
+        <div class="icon" style="background: rgba(40,114,250,0.1); color: var(--color-primary);">🧠</div>
+        <h2>Wie funktioniert ChatGPT eigentlich?</h2>
+    </div>
+    <div class="cards">
+        <div class="card">
+            <h3>So „denkt" die KI</h3>
+            <p>ChatGPT hat Milliarden von Texten aus dem Internet gelesen und dabei Muster gelernt. Es sagt immer das <strong>wahrscheinlichste nächste Wort</strong> voraus – es „versteht" nicht wirklich, sondern imitiert menschliche Sprache sehr gut.</p>
+            <div class="links">
+                <a href="https://www.youtube.com/watch?v=flXrLGPY3SU" target="_blank">🎬 Wie KI funktioniert (Kurzgesagt) <span class="arrow">↗</span></a>
+                <a href="https://ki-campus.org/" target="_blank">📖 KI-Campus: Grundlagen <span class="arrow">↗</span></a>
+            </div>
+        </div>
+        <div class="card">
+            <h3>Woher kommen die Informationen?</h3>
+            <p>ChatGPT wurde mit Texten aus dem Internet trainiert (Bücher, Artikel, Webseiten, Wikipedia…). Es hat einen <strong>Wissensstand bis zu einem bestimmten Datum</strong> und kennt keine tagesaktuellen Ereignisse (es sei denn, es kann im Internet suchen).</p>
+            <div class="links">
+                <a href="https://openai.com/index/chatgpt/" target="_blank">📖 OpenAI: Über ChatGPT <span class="arrow">↗</span></a>
+            </div>
+        </div>
+        <div class="card">
+            <h3>⚠️ Halluzinationen – Wenn die KI sich irrt</h3>
+            <p>Manchmal erfindet ChatGPT Fakten, die überzeugend klingen, aber <strong>falsch</strong> sind. Das nennt man „Halluzinationen". Deshalb gilt immer: <strong>Quellen prüfen!</strong> Nicht alles, was die KI schreibt, stimmt.</p>
+            <div class="links">
+                <a href="https://www.quarks.de/technik/kuenstliche-intelligenz/chatgpt-so-umgehst-du-die-groessten-fallen/" target="_blank">📖 Quarks: ChatGPT-Fallen <span class="arrow">↗</span></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── SECTION: Datenschutz ─── -->
+    <div id="datenschutz" class="section-heading">
+        <div class="icon" style="background: rgba(207,46,46,0.1); color: var(--color-accent-red);">🔒</div>
+        <h2>Datenschutz – Darauf musst du achten</h2>
+    </div>
+    <div class="warning-banner">
+        <div class="emoji">⚠️</div>
+        <div>
+            <h3>Goldene Regeln beim Umgang mit KI</h3>
+            <ul>
+                <li><strong>Keine persönlichen Daten eingeben</strong> – kein voller Name, keine Adresse, keine Telefonnummer</li>
+                <li><strong>Keine Fotos von dir oder anderen hochladen</strong> – KI-Dienste speichern teilweise Eingaben</li>
+                <li><strong>Antworten immer kritisch prüfen</strong> – KI kann falsche Informationen liefern</li>
+                <li><strong>Transparent sein</strong> – sage deinem Lehrer, wenn du KI für eine Aufgabe genutzt hast</li>
+                <li><strong>Kein Copy-Paste von KI-Texten als eigene Arbeit</strong> – das ist Täuschung</li>
+            </ul>
+        </div>
+    </div>
+    <div class="cards">
+        <div class="card">
+            <h3>Fobizz – Datenschutzkonforme KI in der Schule</h3>
+            <p>Fobizz bietet KI-Tools, die speziell für den Schulunterricht entwickelt wurden und den deutschen Datenschutz (DSGVO) einhalten. Keine Schüler-Accounts nötig, alle Daten werden nach Nutzung gelöscht.</p>
+            <div class="links">
+                <a href="https://fobizz.com/de/die-fobizz-tools-fuer-schule-und-unterricht/" target="_blank">📖 Fobizz Tools <span class="arrow">↗</span></a>
+                <a href="https://deutsches-schulportal.de/unterricht/fobizz-schulki-und-co-welche-ki-tools-koennen-schulen-nutzen/" target="_blank">📖 Schulportal: KI-Tools Vergleich <span class="arrow">↗</span></a>
+            </div>
+        </div>
+        <div class="card">
+            <h3>Was darf ich? Was darf ich nicht?</h3>
+            <p>Die direkte Nutzung von ChatGPT durch Schüler ist an vielen Schulen <strong>nicht offiziell erlaubt</strong>. Datenschutzkonforme Alternativen wie Fobizz oder „telli" werden von den Bundesländern empfohlen. Frage im Zweifel deine Lehrkraft.</p>
+            <div class="links">
+                <a href="https://ki-katalog.de/blog/ki-tools-unterricht-schule-dsgvo-konform-lehrer-guide.html" target="_blank">📖 DSGVO-konforme KI-Tools <span class="arrow">↗</span></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── SECTION: Bücher & Texte mit KI ─── -->
+    <div class="section-heading">
+        <div class="icon" style="background: rgba(40,114,250,0.1); color: var(--color-primary);">📚</div>
+        <h2>Bücher &amp; Texte mit KI bearbeiten</h2>
+    </div>
+    <div class="cards">
+        <div class="card">
+            <h3>„Fasse mir den Text zusammen"</h3>
+            <p>Kopiere oder fotografiere einen Text und gib ihn der KI. Bitte sie um eine Zusammenfassung in eigenen Worten, in einer bestimmten Länge, oder für eine bestimmte Klassenstufe.</p>
+            <div class="links">
+                <a href="https://notebooklm.google/" target="_blank">NotebookLM nutzen <span class="arrow">↗</span></a>
+                <a href="https://chatgpt.com/" target="_blank">ChatGPT nutzen <span class="arrow">↗</span></a>
+            </div>
+        </div>
+        <div class="card">
+            <h3>„Stell mir Fragen zu diesem Text"</h3>
+            <p>Lass die KI Verständnisfragen zu einem Text generieren. Versuche sie zuerst selbst zu beantworten, bevor du die KI nach der Lösung fragst – so lernst du am meisten.</p>
+            <div class="links">
+                <a href="https://www.youtube.com/watch?v=QiG-Uzi-_J0" target="_blank">🎬 NotebookLM: Summaries & Quiz <span class="arrow">↗</span></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── SECTION: Weiterführende Ressourcen ─── -->
+    <div id="ressourcen" class="section-heading">
+        <div class="icon" style="background: rgba(155,81,224,0.12); color: #7c3aed;">🔗</div>
+        <h2>Weiterführende Ressourcen</h2>
+    </div>
+    <div class="resources-grid">
+        <a href="https://ki-campus.org/" target="_blank" class="resource-link">
+            <div class="r-icon">🎓</div>
+            <div class="r-text">
+                <strong>KI-Campus</strong>
+                <span>Kostenlose Onlinekurse zu KI – auch für Schüler</span>
+            </div>
+        </a>
+        <a href="https://fobizz.com/de/" target="_blank" class="resource-link">
+            <div class="r-icon">🛡️</div>
+            <div class="r-text">
+                <strong>Fobizz</strong>
+                <span>Datenschutzkonforme KI-Tools für Schulen</span>
+            </div>
+        </a>
+        <a href="https://notebooklm.google/" target="_blank" class="resource-link">
+            <div class="r-icon">📓</div>
+            <div class="r-text">
+                <strong>Google NotebookLM</strong>
+                <span>KI-Lernassistent mit Audio & Zusammenfassungen</span>
+            </div>
+        </a>
+        <a href="https://www.quarks.de/technik/kuenstliche-intelligenz/" target="_blank" class="resource-link">
+            <div class="r-icon">🔬</div>
+            <div class="r-text">
+                <strong>Quarks: KI verstehen</strong>
+                <span>Wissenschaftsjournalismus zu KI-Themen</span>
+            </div>
+        </a>
+        <a href="https://deutsches-schulportal.de/unterricht/fobizz-schulki-und-co-welche-ki-tools-koennen-schulen-nutzen/" target="_blank" class="resource-link">
+            <div class="r-icon">🏫</div>
+            <div class="r-text">
+                <strong>Deutsches Schulportal</strong>
+                <span>Vergleich: Welche KI-Tools können Schulen nutzen?</span>
+            </div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=flXrLGPY3SU" target="_blank" class="resource-link">
+            <div class="r-icon">🎬</div>
+            <div class="r-text">
+                <strong>Kurzgesagt: KI erklärt</strong>
+                <span>YouTube-Video: Wie funktioniert Künstliche Intelligenz?</span>
+            </div>
+        </a>
+    </div>
+
+</main>
+
+<!-- ════ FOOTER ════ -->
+<footer class="site-footer">
+    <p>
+        KI an der Schule – Werkzeuge, Tipps &amp; Ressourcen<br>
+        Eine Orientierungshilfe für Schüler, Lehrkräfte und Eltern. Stand: April 2026.
+    </p>
+</footer>
+
+</body>
+</html>
